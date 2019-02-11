@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const initialState = {
-    query: '',
+  query: '',
 };
 
 class Header extends Component {
