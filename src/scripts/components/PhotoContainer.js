@@ -32,8 +32,6 @@ class PhotoContainer extends Component {
 	}
 
 	clear(){
-		console.log('HERE');
-		
 		this.setState(initialState);
 	}
 
