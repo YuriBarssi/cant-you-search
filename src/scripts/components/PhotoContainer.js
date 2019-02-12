@@ -32,6 +32,8 @@ class PhotoContainer extends Component {
 	}
 
 	clear(){
+		console.log('HERE');
+		
 		this.setState(initialState);
 	}
 
@@ -57,13 +59,16 @@ class PhotoContainer extends Component {
 	}
 
 	fetchData(tags){
-		this.setState({ isLoading: true });
-		const searchValue = tags || this.state.tags;
-		getPhotos(this.state.currentPage, searchValue).then((data) => {
-			this.updateCurrentPage();
-			this.setPhotoDataState(data);
-			this.createCards();
-		});
+		// This is to avoid the async of setState
+		if(!(tags && this.state.currentPage!==1)) {
+			this.setState({ isLoading: true });
+			const searchValue = tags || this.state.tags;
+			getPhotos(this.state.currentPage, searchValue).then((data) => {
+				this.updateCurrentPage();
+				this.setPhotoDataState(data);
+				this.createCards();
+			});
+		}
 	}
 
 	renderContainer(){
