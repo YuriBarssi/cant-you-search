@@ -9,7 +9,6 @@ const initialState = {
 	isLoading: false
 };
 
-// This is just the main container for the photos
 class PhotoContainer extends Component {
 
 	constructor(props) {
@@ -20,7 +19,7 @@ class PhotoContainer extends Component {
 		this.fetchData = this.fetchData.bind(this);
 		this.updateTags = this.updateTags.bind(this);
 		this.updateCurrentPage = this.updateCurrentPage.bind(this);
-		this.showLoader = this.showLoader.bind(this);
+		this.renderContainer = this.renderContainer.bind(this);
 	}
 	
 	componentDidMount() {
@@ -67,19 +66,16 @@ class PhotoContainer extends Component {
 		});
 	}
 
-	// The loader is not being used. 
-	showLoader(){
-		return (
-			<div class="spinner-border text-danger loading" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		);  
-	}
-
-	renderPhotoContainer(){
-		return (this.state.cards === []) 
-			? <div><h1>Nothing to show!</h1></div>
-			: this.createCards();
+	renderContainer(){
+		return (this.state.cards.length 
+			? this.createCards()
+			: <div className="message"><h1>{ 
+				this.state.isLoading 
+					? "Loading..."
+					: "Nothing to show!" 
+				}
+			</h1></div>
+		); 
 	}
 
 	createCards(){
@@ -90,7 +86,7 @@ class PhotoContainer extends Component {
 			// Then push them all to an array to be rendered later
 			cards.push(
 				<Card id = {i} key = {i} 
-					imageUrl = { photo.url_m } 
+					imageUrl = { photo.url_n } 
 					photoTitle = { photo.title } 
 					ownerName = { photo.ownername } 
 					dateTaken = { photo.datetaken } 
@@ -104,14 +100,7 @@ class PhotoContainer extends Component {
 	}
 
 	render() {
-		const pageContent = this.state.cards.length 
-			? this.createCards()
-			: <div className="message"><h1>{ 
-					this.state.isLoading 
-						? "Loading..."
-						: "Nothing to show!" 
-					}
-				</h1></div>; 
+		const pageContent = this.renderContainer();
 		return (
 			<div ref="infScroll" className="photo-container">
 				{ pageContent }

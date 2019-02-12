@@ -29,7 +29,7 @@ class Header extends Component {
 		this.props.dispatchClear();
 		const tags = this.state.query 
 			? this.state.query.trim().replace(/ +/g, ',') 
-			: 'random'; // make random query
+			: 'random'; // make random query - because why not?
 		this.props.dispatchSearchCallback(tags);
 		event.preventDefault();
 	}

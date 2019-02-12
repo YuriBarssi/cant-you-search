@@ -5,10 +5,10 @@ export function getPhotos(pageNumber, searchQuery){
 	const requestURL = createRequestURL(pageNumber, searchQuery);
 	return axios.get(requestURL)
 		.then(response => {
-				return response.data
+			return response.data
 		})
 		.catch(error => {
-				console.log(error);
+			console.log(error);
 		});
 }
 

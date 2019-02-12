@@ -50,13 +50,13 @@ body {
 .photo-container {
 	flex-wrap: wrap;
 	flex-direction: column;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 3%;
+	margin-right: 3%;
 	overflow: auto;
 	height: 85vh;  
 	position: relative;
 	padding: 0.5rem;
-	width: 100%;
+	width: auto;
 	justify-content: center;
 
 	h1 {
@@ -78,8 +78,7 @@ body {
 	display: inline-grid;
 	align-self: flex-start;
 	margin: 12px;
-	flex-basis: 30%;
-	width: 22rem;
+	max-width: 22rem;
 	font-weight: 300;
 	margin-bottom: 1rem;
 	line-height: 1.4;
@@ -106,6 +105,7 @@ body {
 	padding-bottom: 20px;
 	bottom: 0;
 	width: 100%;
+	font-size: 40;
 	b {
 		color: #ec0b43;
 	}

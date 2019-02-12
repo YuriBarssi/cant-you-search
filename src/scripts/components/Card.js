@@ -5,15 +5,13 @@ class Card extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-		}
 		this.createTagPills = this.createTagPills.bind(this);
 		this.formatDate = this.formatDate.bind(this);
 	}
 
 	createTagPills(tags){
 		const tagsArray = tags.split(' ');
-		return tagsArray.splice(0,20).map((tag, index) => {
+		return tagsArray.splice(0, 25).map((tag, index) => {
 			return <span key={index} className="badge badge-pill badge-light">{ tag }</span>
 		});
 	}
